@@ -1,6 +1,7 @@
-import './assets/main.css'
+import './assets/main.css';
+import typeBox from './components/typeBox.vue';
 
-import { createApp } from 'vue'
-import App from './App.vue'
+import { createApp } from 'vue';
+import App from './App.vue';
 
-createApp(App).mount('#app')
+createApp(App).component('typeBox', typeBox).mount('#app');
