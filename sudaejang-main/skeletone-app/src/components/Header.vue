@@ -7,6 +7,13 @@
         >
             edit으로
         </button>
+        <button
+            type="button"
+            class="btn btn-primary m-1"
+            @click="goAdd"
+        >
+            add로
+        </button>
         <a href="./home" class="headerName"
             ><img
                 id="homeFont"
@@ -128,7 +135,11 @@ const hideDropdown = () => {
     isDropdownVisible.value = false;
 };
 const goEdit = () => {
-    router.push({ name: 'editChart' });
+    router.push('/edit/:id');
+};
+
+const goAdd = () => {
+    router.push('/add');
 };
 
 loadTransaction();

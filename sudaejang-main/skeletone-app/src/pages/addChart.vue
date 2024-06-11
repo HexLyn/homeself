@@ -235,20 +235,20 @@ const cancleTransaction = () => {
 </script>
 
 <style>
-/* 전체 수정 박스 */
 .totalBox {
     height: 700px;
     width: 859px;
-    margin: 20px 0;
+    margin-top: 15px;
+    margin-bottom: 20px;
     background-color: white;
     border-radius: 30px;
     box-shadow: 10px 10px 10px 0px rgba(190, 190, 190, 0.48);
-    margin-top: 15px;
     position: relative;
+    box-sizing: border-box;
 }
-/* 전체 내용 묶음 */
+
+/* 전체 내용 묶음  */
 .totalInfo {
-    position: absolute;
     top: 30px;
 }
 
@@ -256,27 +256,23 @@ const cancleTransaction = () => {
 .nameRow {
     text-align: center;
     margin: 0 auto;
-    position: absolute;
-    top: 30px;
-}
-.totalBox > .nameRow > div > h2 {
-    color: red;
     height: 60px;
     width: 429px;
-    margin: 0 auto;
-}
-
-/* 대상 거래내역 정보 파트 */
-.targetRow {
-    width: 750px;
-    height: 130px;
-    background-color: #cddef1;
-    border-radius: 30px;
     position: absolute;
-    top: 70px;
-    left: 54.5px;
+    top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
+.totalBox > .totalInfo > .nameRow > div > h2 {
+    margin: 0;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
 /* 세부 입력박스 파트 */
 .infoRow {
     width: 800px;
@@ -284,12 +280,16 @@ const cancleTransaction = () => {
     position: absolute;
     top: 200px;
     left: 59px;
+    box-sizing: border-box;
 }
+
 .required::after {
     content: ' *';
     color: red;
-    font: 30px bold;
+    font-size: 30px;
+    font-weight: bold;
 }
+
 .form-group select,
 .form-group input {
     width: 460px;
@@ -297,9 +297,12 @@ const cancleTransaction = () => {
     box-sizing: border-box;
     margin-top: 30px;
 }
+
 .form-group > label {
-    font: 20px bold;
+    font-size: 20px;
+    font-weight: bold;
 }
+
 /* 일자, 시간 토막내기, 아이콘 크기 */
 #date,
 #time {
@@ -308,6 +311,7 @@ const cancleTransaction = () => {
     box-sizing: border-box;
     margin-top: 30px;
 }
+
 i {
     font-size: 35px;
 }
