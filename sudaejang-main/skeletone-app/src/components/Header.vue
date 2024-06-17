@@ -1,26 +1,6 @@
 <template>
     <div class="container header">
-        <button
-            type="button"
-            class="btn btn-primary m-1"
-            @click="goEdit"
-        >
-            edit으로
-        </button>
-        <button
-            type="button"
-            class="btn btn-primary m-1"
-            @click="goAdd"
-        >
-            add로
-        </button>
-        <a href="./home" class="headerName"
-            ><img
-                id="homeFont"
-                src="../assets/images/lll.PNG"
-                style="width: 100px"
-            />가계부</a
-        >
+        <a href="./home" class="headerName">4조 가계부</a>
         <div class="headerRight">
             <div class="input_date_box">
                 <input
@@ -67,12 +47,14 @@
                     </ul>
                 </div>
             </div>
+            <div class="pencil-container" @click="goAdd">
+                <span
+                    class="pencil material-symbols-outlined"
+                >
+                    draft_orders
+                </span>
+            </div>
         </div>
-    </div>
-    <div class="pencil-container">
-        <span class="pencil material-symbols-outlined">
-            draft_orders
-        </span>
     </div>
 </template>
 
@@ -82,6 +64,7 @@ import { useProfileStore } from '@/stores/profileDate.js';
 import { ref, computed } from 'vue';
 import axios from 'axios';
 import { useRouter } from 'vue-router';
+import AddChart from '@/pages/addChart.vue';
 
 const store = useProfileStore();
 const router = useRouter();
@@ -133,9 +116,6 @@ const goToProfileSetting = () => {
 
 const hideDropdown = () => {
     isDropdownVisible.value = false;
-};
-const goEdit = () => {
-    router.push('/edit/:id');
 };
 
 const goAdd = () => {

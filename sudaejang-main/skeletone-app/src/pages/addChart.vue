@@ -3,7 +3,7 @@
         <div class="totalInfo">
             <div class="nameRow">
                 <div class="col p-3">
-                    <h2>가계부 추가(제목)</h2>
+                    <h2>가계부 등록</h2>
                 </div>
             </div>
             <!-- 수정 상세 -->
@@ -64,6 +64,7 @@
                             </option>
                         </select>
                     </div>
+                    <br />
                     <div class="form-group">
                         <label for="memo">메모</label>
                         <input
@@ -118,22 +119,22 @@
                         />
                         <i class="fa-regular fa-clock"></i>
                     </div>
-                    <div class="form-group">
-                        <button
-                            type="button"
-                            class="btn btn-primary m-1"
-                            @click="cancleTransaction"
-                        >
-                            취소
-                        </button>
-                        <button
-                            type="button"
-                            class="btn btn-primary m-1"
-                            @click="saveTransaction"
-                        >
-                            저장
-                        </button>
-                    </div>
+                    <br />
+                </div>
+                <div class="btnGroup">
+                    <button
+                        type="button"
+                        @click="cancleTransaction"
+                    >
+                        취소
+                    </button>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <button
+                        type="button"
+                        @click="saveTransaction"
+                    >
+                        저장
+                    </button>
                 </div>
             </div>
         </div>
@@ -213,6 +214,7 @@ const transaction = reactive({
     date: '',
 });
 
+// 저장 하려면 async사용
 const saveTransaction = () => {
     if (
         !transaction.type ||
@@ -224,95 +226,33 @@ const saveTransaction = () => {
         return;
     }
     router.push('/Home');
+
+    // try {
+    //     const response = await axios.post(BASEURI, {
+    //         type: transaction.type,
+    //         category: transaction.category,
+    //         memo: transaction.memo,
+    //         amount: transaction.amount,
+    //         date: transaction.date,
+    //         time: transaction.time,
+    //     });
+
+    //     if (response.status === 200) {
+    //         alert('데이터가 성공적으로 저장되었습니다.');
+    //         router.push('/Home');
+    //     } else {
+    //         alert('데이터 저장 실패');
+    //     }
+    // } catch (error) {
+    //     alert('에러 발생 : ' + error);
+    // }
 };
+
 const cancleTransaction = () => {
     const userConfirmed =
-        confirm('수정을 취소하시겠습니까?');
+        confirm('기록을 취소하시겠습니까?');
     if (userConfirmed) {
         router.push('/Home');
     }
 };
 </script>
-
-<style>
-.totalBox {
-    height: 700px;
-    width: 859px;
-    margin-top: 15px;
-    margin-bottom: 20px;
-    background-color: white;
-    border-radius: 30px;
-    box-shadow: 10px 10px 10px 0px rgba(190, 190, 190, 0.48);
-    position: relative;
-    box-sizing: border-box;
-}
-
-/* 전체 내용 묶음  */
-.totalInfo {
-    top: 30px;
-}
-
-/* 가계부 수정, 제목 파트 */
-.nameRow {
-    text-align: center;
-    margin: 0 auto;
-    height: 60px;
-    width: 429px;
-    position: absolute;
-    top: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.totalBox > .totalInfo > .nameRow > div > h2 {
-    margin: 0;
-    line-height: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-}
-/* 세부 입력박스 파트 */
-.infoRow {
-    width: 800px;
-    height: 500px;
-    position: absolute;
-    top: 200px;
-    left: 59px;
-    box-sizing: border-box;
-}
-
-.required::after {
-    content: ' *';
-    color: red;
-    font-size: 30px;
-    font-weight: bold;
-}
-
-.form-group select,
-.form-group input {
-    width: 460px;
-    height: 40px;
-    box-sizing: border-box;
-    margin-top: 30px;
-}
-
-.form-group > label {
-    font-size: 20px;
-    font-weight: bold;
-}
-
-/* 일자, 시간 토막내기, 아이콘 크기 */
-#date,
-#time {
-    width: 200px;
-    height: 40px;
-    box-sizing: border-box;
-    margin-top: 30px;
-}
-
-i {
-    font-size: 35px;
-}
-</style>
